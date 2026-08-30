@@ -1,0 +1,11 @@
+{
+  "contactUrl": "https://www.etsy.com/messages/new?with_id=1105053334&referring_id=60542929&referring_type=shop&recipient_id=1105053334",
+  "storyQuote": "What began as tinkering with a 3D printer turned into a shop full of things I actually wanted to make — practical pieces, fun gifts, and the occasional just-because-it-looked-cool design. Every item is printed, checked, and packed by hand, one layer at a time.",
+  "policies": [
+    { "title": "Shipping", "body": "See each item's listing for estimated arrival times." },
+    { "title": "Payment options", "body": "Secure checkout through Etsy. Accepts Etsy Gift Cards and Etsy Credits. Etsy shops never receive your credit card information." },
+    { "title": "Returns & exchanges", "body": "See each item's listing for return and exchange eligibility." },
+    { "title": "Cancellations", "body": "Cancellations are not accepted. Please contact the shop if there's a problem with your order." },
+    { "title": "Privacy", "body": "Handled by Etsy's own privacy policy at checkout and messaging." }
+  ]
+}

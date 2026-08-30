@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{SHOP_NAME}}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#f2ece0;
+    --surface:#e9e0cf;
+    --surface-2:#ddd2ba;
+    --text:#17151c;
+    --text-dim:#6d6a72;
+    --accent:#b56a34;
+    --accent-strong:#8f4f22;
+    --border:rgba(23,21,28,0.14);
+    --shadow:rgba(23,21,28,0.10);
+    --hero-facet-a:rgba(23,21,28,0.05);
+    --hero-facet-b:rgba(181,106,52,0.10);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#131118; --surface:#1c1a22; --surface-2:#26232d;
+      --text:#efe9de; --text-dim:#9a94a3;
+      --accent:#d98a4c; --accent-strong:#f0a468;
+      --border:rgba(239,233,222,0.14); --shadow:rgba(0,0,0,0.45);
+      --hero-facet-a:rgba(239,233,222,0.05); --hero-facet-b:rgba(217,138,76,0.14);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#131118; --surface:#1c1a22; --surface-2:#26232d;
+    --text:#efe9de; --text-dim:#9a94a3;
+    --accent:#d98a4c; --accent-strong:#f0a468;
+    --border:rgba(239,233,222,0.14); --shadow:rgba(0,0,0,0.45);
+    --hero-facet-a:rgba(239,233,222,0.05); --hero-facet-b:rgba(217,138,76,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation:none !important;transition:none !important;} }
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Source Serif 4',Georgia,'Times New Roman',serif;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .mono{font-family:'IBM Plex Mono','Courier New',monospace;}
+  a{color:inherit;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);}
+  header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.1rem clamp(1.25rem,4vw,3rem);background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+  .wordmark{font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:.08em;font-size:.95rem;text-decoration:none;display:flex;align-items:center;gap:.5rem;}
+  .wordmark .mark{width:.7rem;height:.7rem;background:var(--accent);clip-path:polygon(50% 0%,100% 38%,82% 100%,18% 100%,0% 38%);display:inline-block;}
+  nav{display:flex;align-items:center;gap:clamp(1rem,2.5vw,2.2rem);}
+  nav a{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.04em;text-decoration:none;color:var(--text-dim);transition:color .2s ease;}
+  nav a:hover{color:var(--text);}
+  .nav-links{display:flex;gap:1.6rem;}
+  @media (max-width:640px){.nav-links{display:none;}}
+  .btn-etsy{display:inline-flex;align-items:center;gap:.45rem;font-family:'IBM Plex Mono',monospace;font-size:.76rem;letter-spacing:.03em;padding:.55rem .95rem;border:1px solid var(--text);border-radius:2px;text-decoration:none;color:var(--text);transition:background .2s ease,color .2s ease;white-space:nowrap;}
+  .btn-etsy:hover{background:var(--text);color:var(--bg);}
+  .hero{position:relative;overflow:hidden;padding:clamp(4.5rem,12vw,8rem) clamp(1.25rem,4vw,3rem) clamp(3.5rem,8vw,5rem);border-bottom:1px solid var(--border);}
+  .facet{position:absolute;pointer-events:none;top:-6%;right:-8%;width:46vw;max-width:34rem;}
+  .hero-inner{position:relative;z-index:2;max-width:64rem;}
+  .hero .eyebrow{margin-bottom:1.1rem;}
+  h1.shop-title{font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(2.8rem,8vw,6rem);line-height:.98;margin:0 0 1.4rem;letter-spacing:-.01em;text-wrap:balance;}
+  .hero-tagline{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(1.1rem,2.2vw,1.45rem);color:var(--text-dim);max-width:38rem;margin:0 0 2.2rem;text-wrap:balance;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:.9rem;}
+  .btn-primary{font-family:'IBM Plex Mono',monospace;font-size:.82rem;letter-spacing:.03em;padding:.85rem 1.4rem;background:var(--accent);color:#fffaf3;border:1px solid var(--accent);border-radius:2px;text-decoration:none;transition:background .2s ease;display:inline-flex;align-items:center;gap:.5rem;}
+  .btn-primary:hover{background:var(--accent-strong);border-color:var(--accent-strong);}
+  .btn-secondary{font-family:'IBM Plex Mono',monospace;font-size:.82rem;letter-spacing:.03em;padding:.85rem 1.4rem;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:2px;text-decoration:none;transition:border-color .2s ease,background .2s ease;display:inline-flex;align-items:center;gap:.5rem;}
+  .btn-secondary:hover{border-color:var(--text);background:var(--surface);}
+  .stats{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--border);}
+  .stat{flex:1 1 12rem;padding:1.15rem clamp(1.25rem,4vw,3rem);border-right:1px solid var(--border);}
+  .stat:last-child{border-right:none;}
+  .stat .num{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.35rem;display:block;}
+  .stat .label{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);}
+  section{padding:clamp(3.5rem,8vw,6rem) clamp(1.25rem,4vw,3rem);}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;margin-bottom:2.6rem;flex-wrap:wrap;max-width:80rem;margin-left:auto;margin-right:auto;}
+  h2.section-title{font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(1.7rem,3.4vw,2.5rem);margin:.3rem 0 0;text-wrap:balance;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(15.5rem,1fr));gap:clamp(1.2rem,2.5vw,1.8rem);max-width:80rem;margin:0 auto;}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s ease,box-shadow .2s ease;}
+  .card:hover{border-color:var(--accent);box-shadow:0 10px 28px -14px var(--shadow);}
+  .card-media{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--surface-2);}
+  .card-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+  .card:hover .card-media img{transform:scale(1.06);}
+  .tag{position:absolute;top:.7rem;left:.7rem;font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;background:color-mix(in srgb,var(--bg) 88%,transparent);color:var(--text);padding:.3rem .55rem;border-radius:2px;border:1px solid var(--border);}
+  .card-body{padding:1.15rem 1.15rem 1.3rem;display:flex;flex-direction:column;gap:.75rem;flex:1;}
+  .card-title{font-family:'Unbounded',sans-serif;font-weight:500;font-size:.98rem;line-height:1.35;margin:0;min-height:2.6em;}
+  .card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:.75rem;}
+  .price{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:1.15rem;font-variant-numeric:tabular-nums;}
+  .buy-btn{font-family:'IBM Plex Mono',monospace;font-size:.76rem;letter-spacing:.02em;padding:.55rem .85rem;background:var(--text);color:var(--bg);border-radius:2px;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:background .2s ease,transform .15s ease;white-space:nowrap;}
+  .buy-btn:hover{background:var(--accent);transform:translateY(-1px);}
+  .about-wrap{max-width:80rem;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start;}
+  @media (max-width:850px){.about-wrap{grid-template-columns:1fr;}}
+  .pull{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(1.3rem,2.6vw,1.85rem);line-height:1.5;margin:0;text-wrap:balance;}
+  .about-facts{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:1.6rem 1.7rem;display:flex;flex-direction:column;gap:1.1rem;}
+  .fact{display:flex;flex-direction:column;gap:.15rem;}
+  .fact .k{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--text-dim);}
+  .fact .v{font-family:'Unbounded',sans-serif;font-size:.95rem;font-weight:500;}
+  .policy-updated{max-width:80rem;margin:0 auto 2rem;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--text-dim);}
+  .policy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:var(--border);border:1px solid var(--border);max-width:80rem;margin:0 auto;border-radius:3px;overflow:hidden;}
+  .policy-card{background:var(--surface);padding:1.6rem 1.5rem;}
+  .policy-card h3{font-family:'Unbounded',sans-serif;font-size:.95rem;margin:0 0 .6rem;}
+  .policy-card p{margin:0;font-size:.92rem;color:var(--text-dim);}
+  footer{border-top:1px solid var(--border);padding:clamp(2.5rem,6vw,3.5rem) clamp(1.25rem,4vw,3rem) 2.5rem;}
+  .footer-wrap{max-width:80rem;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;align-items:flex-end;}
+  .footer-cta h2{font-family:'Unbounded',sans-serif;font-size:clamp(1.4rem,3vw,2rem);margin:0 0 1.1rem;max-width:22rem;text-wrap:balance;}
+  .footer-meta{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--text-dim);text-align:right;line-height:1.7;}
+  @media (max-width:640px){.footer-meta{text-align:left;}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="wordmark" href="#top"><span class="mark"></span>{{SHOP_NAME_UPPER}}</a>
+  <nav>
+    <div class="nav-links">
+      <a href="#items">Items</a>
+      <a href="#about">About</a>
+      <a href="#policies">Policies</a>
+    </div>
+    <a class="btn-etsy" href="{{SHOP_URL}}" target="_blank" rel="noopener noreferrer">Visit Shop ↗</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <svg class="facet" viewBox="0 0 400 400" fill="none">
+      <polygon points="200,10 380,120 340,340 60,340 20,120" fill="var(--hero-facet-a)"/>
+      <polygon points="200,10 340,340 60,340" fill="var(--hero-facet-b)"/>
+      <polygon points="200,10 380,120 340,340" fill="var(--hero-facet-a)"/>
+      <line x1="200" y1="10" x2="200" y2="340" stroke="var(--border)" stroke-width="1"/>
+      <line x1="20" y1="120" x2="380" y2="120" stroke="var(--border)" stroke-width="1"/>
+    </svg>
+    <div class="hero-inner">
+      <div class="eyebrow">{{SHOP_NAME}} · Etsy Shop · United States</div>
+      <h1 class="shop-title">Printed layer<br>by layer.</h1>
+      <p class="hero-tagline">Loved piece by piece — geometric sculptures, custom pet figurines, and small useful things, designed and 3D&nbsp;printed one layer at a time.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#items">Shop the Collection ↓</a>
+        <a class="btn-secondary" href="{{SHOP_URL}}" target="_blank" rel="noopener noreferrer">Visit on Etsy ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+{{STAT_TILES}}
+  </div>
+
+  <section id="items">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">01 — The Work</div>
+        <h2 class="section-title">Shop items</h2>
+      </div>
+      <div class="eyebrow" style="max-width:16rem;text-align:right;">Updated {{UPDATED_AT}}</div>
+    </div>
+    <div class="grid">
+{{ITEM_CARDS}}
+    </div>
+  </section>
+
+  <section id="about" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">02 — The Story</div>
+        <h2 class="section-title">About {{SHOP_NAME}}</h2>
+      </div>
+    </div>
+    <div class="about-wrap">
+      <p class="pull">"{{STORY}}"</p>
+      <div class="about-facts">
+        <div class="fact"><span class="k">Shop</span><span class="v">{{SHOP_NAME}}</span></div>
+        <div class="fact"><span class="k">Location</span><span class="v">United States</span></div>
+        <div class="fact"><span class="k">Process</span><span class="v">Printed, checked & packed by hand</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="policies">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">03 — Good to Know</div>
+        <h2 class="section-title">Shop policies</h2>
+      </div>
+    </div>
+    <div class="policy-grid">
+{{POLICY_CARDS}}
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-wrap">
+    <div class="footer-cta">
+      <h2>Have a custom idea? Send it over.</h2>
+      <a class="btn-primary" href="{{CONTACT_URL}}" target="_blank" rel="noopener noreferrer">Message {{SHOP_NAME}} on Etsy ↗</a>
+    </div>
+    <div class="footer-meta">
+      {{SHOP_NAME}} · Etsy Shop · United States<br>
+      All prices and links point to the official Etsy listings.<br>
+      Not affiliated with or endorsed by Etsy, Inc.<br>
+      Auto-updated daily from Etsy · Last build {{UPDATED_AT}}
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
